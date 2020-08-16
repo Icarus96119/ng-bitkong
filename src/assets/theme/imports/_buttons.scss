@@ -1,0 +1,16 @@
+.btn.btn {
+  &-primary {
+    background: linear-gradient(#714F72,#453F70);
+  }
+  &-warning {
+    color: white;
+    background: linear-gradient(45deg, #F18F01 0%, #F9B256 100%);
+  }
+  &-success {
+    background: linear-gradient(#54ED9F,#A67AB2);
+  }
+}
+
+.btn-normal {
+  min-width: 145px;
+}

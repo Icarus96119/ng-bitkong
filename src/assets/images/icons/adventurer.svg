@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="15px" height="14px" viewBox="0 0 15 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>adventurer-icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Product-home-english" sketch:type="MSArtboardGroup" transform="translate(-146.000000, -395.000000)" fill="#FFFFFF">
+            <g id="feed-card" sketch:type="MSLayerGroup" transform="translate(132.000000, 381.659539)">
+                <path d="M25.4961108,26.5 L21.2722472,24.2795262 L17.0479198,26.5 L17.8545636,21.7969742 L14.4373439,18.4655677 L19.1598516,17.7790623 L21.2722472,13.5 L23.3837151,17.7790623 L28.1062228,18.4655677 L24.6894669,21.7965104 L25.4961108,26.5 L25.4961108,26.5 Z M21.2722472,23.2312139 L24.2641119,24.8041461 L23.6926425,21.4727396 L26.1130379,19.1131093 L22.7677157,18.6274531 L21.2722472,15.5961607 L19.7763149,18.6274531 L16.4309926,19.1131093 L18.851388,21.4727396 L18.2803825,24.8041461 L21.2722472,23.2312139 L21.2722472,23.2312139 Z" id="adventurer-icon" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>

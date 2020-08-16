@@ -1,0 +1,52 @@
+<div class="table-header d-flex justify-content-between align-items-center bg-color-mulled-wine text-white font-12 px-15">
+  <div *ngFor="let column of columns" class="d-flex" [ngClass]="column.className"  [style.width]="column.width" [class.flex-grow-1]="!column.width">
+    <span class="font-12 color-blue-haze">{{ column.label }}</span>
+  </div>
+</div>
+
+<div class="position-relative">
+  <div *ngFor="let row of rows">
+    <div class="table-row d-flex flex-column flex-md-row justify-content-between align-items-center text-center text-md-left px-15 py-10 cursor-pointer">
+      <div class="py-10 py-md-0" *ngFor="let column of columns" [style.width]="column.width">
+        <ng-container [ngSwitch]="column.type">
+          <div class="d-flex align-items-center" [ngClass]="column.className" *ngSwitchCase="ColumnTypes.Player">
+            <div class="mr-5 circle px-5">
+              <img src="assets/images/icons/{{row.playerRank | lowercase}}.svg" [alt]="column.name">
+            </div>
+            <span class="font-12 color-blue-haze">{{ row[column.name] }}</span>
+          </div>
+          <div class="d-flex align-items-center" [ngClass]="column.className" *ngSwitchCase="ColumnTypes.Step">
+            <span class="font-12 color-blue-haze">{{ row[column.name] }}</span>
+            <div class="ml-auto circle px-5">
+              <img src="assets/images/icons/{{row.gameLevel}}.png" [alt]="column.name">
+            </div>
+          </div>
+          <div class="d-flex align-items-center" [ngClass]="column.className" *ngSwitchCase="ColumnTypes.Wagered">
+            <span class="font-12 text-warning">{{ row[column.name] }}</span>
+          </div>
+          <div class="d-flex" *ngSwitchCase="ColumnTypes.Prize">
+            <div *ngIf="row[column.name] < 4; else other" class="d-flex align-items-center justify-content-center prize-icon">
+              <span class="font-12 text-primary mb-5">{{ row[column.name] }}</span>
+            </div>
+            <ng-template #other>
+              <div class="d-flex align-items-center circle px-10 py-5" [ngClass]="column.className">
+                <span class="font-12 color-blue-haze">{{ row[column.name] }}</span>
+              </div>
+            </ng-template>
+          </div>
+          <div class="d-flex align-items-center" [ngClass]="column.className" *ngSwitchDefault>
+            <span class="font-12 color-blue-haze">{{ row[column.name] }}</span>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-row d-flex justify-content-center align-items-center py-20 px-15" *ngIf="!rows.length && !loading">
+    <div class="text-center font-13 font-weight-medium color-white">{{ emptyDescription }}</div>
+  </div>
+
+  <bitkong-spinner [diameter]="20" *ngIf="loading"></bitkong-spinner>
+</div>
+
+

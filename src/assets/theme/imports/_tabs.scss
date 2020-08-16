@@ -1,0 +1,14 @@
+.nav.nav-tabs {
+  .nav-item {
+    padding: 0 30px;
+    .nav-link {
+      border: none;
+      border-bottom: 2px solid white;
+      padding: 5px 0;
+      color: $blue-haze;
+      &.active {
+        color: $rhino;
+      }
+    }
+  }
+}

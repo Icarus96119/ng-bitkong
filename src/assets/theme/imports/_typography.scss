@@ -1,0 +1,13 @@
+div, p, a, span {
+  font-size: 15px;
+}
+
+@for $i from 5 through 90 {
+  .font-#{$i} {
+    font-size: #{$i}px;
+  }
+}
+
+.font-weight-medium {
+  font-weight: 500;
+}

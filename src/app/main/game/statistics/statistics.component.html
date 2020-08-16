@@ -1,0 +1,24 @@
+<div class="d-none d-lg-block">
+  <div class="total bg-primary p-10 mb-10">
+    <div class="row">
+      <div class="col-6 text-center">
+        <p class="text-warning font-20 font-weight-bold">201</p>
+        <span class="text-warning">GAMES PLAYED</span>
+      </div>
+      <div class="col-6 text-center">
+        <p class="text-warning font-20 font-weight-bold">433434343</p>
+        <span class="text-warning">WAGERED (R)</span>
+      </div>
+    </div>
+  </div>
+  <div class="tabs bg-primary">
+    <div class="d-flex">
+      <ng-container *ngFor="let item  of statisticsTypes">
+        <div class="col-4 py-15 tab-item text-center" [class.active]="currentStatistics === item" (click)="goStatistics(item)">
+          <div class="text-warning py-5">{{item.label}}</div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <bitkong-table [columns]="currentStatistics.columns" [rows]="statisticsData"></bitkong-table>
+</div>
