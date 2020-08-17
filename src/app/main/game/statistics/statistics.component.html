@@ -1,5 +1,5 @@
-<div class="d-none d-lg-block">
-  <div class="total bg-primary p-10 mb-10">
+<div class="mt-100 d-none d-lg-block">
+  <div class="total bg-primary p-10 mb-10 border-radius-15">
     <div class="row">
       <div class="col-6 text-center">
         <p class="text-warning font-20 font-weight-bold">201</p>
@@ -11,11 +11,12 @@
       </div>
     </div>
   </div>
-  <div class="tabs bg-primary">
+  <div class="tabs bg-primary border-top-left-radius-15 border-top-right-radius-15">
     <div class="d-flex">
       <ng-container *ngFor="let item  of statisticsTypes">
-        <div class="col-4 py-15 tab-item text-center" [class.active]="currentStatistics === item" (click)="goStatistics(item)">
-          <div class="text-warning py-5">{{item.label}}</div>
+        <div class="col-4 py-15 px-5 tab-item text-center" [class.active]="currentStatistics === item" (click)="goStatistics(item)">
+          <div class="text-warning py-5 px-10 border-radius-5 cursor-pointer d-none d-lg-block d-xl-none font-13 font-weight-bold">{{item.label}}</div>
+          <div class="text-warning py-5 px-10 border-radius-5 cursor-pointer d-none d-xl-block font-16 font-weight-bold">{{item.label}}</div>
         </div>
       </ng-container>
     </div>

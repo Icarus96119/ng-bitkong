@@ -14,6 +14,27 @@
   &-smoky {
     #{$property}: $smoky;
   }
+  &-bazaar {
+    #{$property}: $bazaar;
+  }
+  &-chalky {
+    #{$property}: $chalky;
+  }
+  &-gold-sand {
+    #{$property}: $gold-sand;
+  }
+  &-puce {
+    #{$property}: $puce;
+  }
+  &-puce {
+    #{$property}: $puce;
+  }
+  &-pastel-green {
+    #{$property}: $pastel-green;
+  }
+  &-quick-sand {
+    #{$property}: $quick-sand;
+  }
   &-white {
     #{$property}: #FFF;
   }
@@ -26,3 +47,8 @@
 .bg-color {
   @include colors(background-color);
 }
+
+.border-color {
+  @include colors(border-color);
+}
+

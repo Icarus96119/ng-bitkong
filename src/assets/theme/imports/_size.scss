@@ -1,0 +1,20 @@
+@for $i from 1 through 100 {
+  .height-#{$i} {
+    height: #{$i}px;
+  }
+  .min-height-#{$i} {
+    min-height: #{$i}px;
+  }
+  .max-height-#{$i} {
+    max-height: #{$i}px;
+  }
+  .width-#{$i} {
+    width: #{$i}px;
+  }
+  .min-width-#{$i} {
+    min-width: #{$i}px;
+  }
+  .max-width-#{$i} {
+    max-width: #{$i}px;
+  }
+}

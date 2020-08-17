@@ -1,35 +1,20 @@
 @import "../../../assets/theme";
 
 .table-header {
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  height: 36px;
+  height: 35px;
 }
 
 .table-row {
-  background-image: linear-gradient(rgba(255,255,255,.05),rgba(255,255,255,.1));
-  border-radius: 10px;
+  background: linear-gradient(rgba(255,255,255,.05),rgba(255,255,255,.1));
 
   .circle {
-    border-radius: 15px;
     background: rgba(255,255,255,.06)
   }
 
   .prize-icon {
-    height: 30px;
-    width: 30px;
     background-image: url('/assets/images/icons/medal.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-
-    span {
-      margin-right: 2px;
-    }
-  }
-
-  img {
-    width: 18px;
-    height: 18px;
   }
 }

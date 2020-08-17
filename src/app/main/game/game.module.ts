@@ -12,7 +12,7 @@ import { HeroHallComponent } from './hero-hall/hero-hall.component';
   declarations: [
     GameComponent,
     StatisticsComponent,
-    HeroHallComponent
+    HeroHallComponent,
   ],
   imports: [
     CommonModule,

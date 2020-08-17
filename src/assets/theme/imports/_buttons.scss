@@ -1,13 +1,15 @@
 .btn.btn {
   &-primary {
-    background: linear-gradient(#714F72,#453F70);
+    background: linear-gradient($salt-box, $east-bay);
   }
   &-warning {
-    color: white;
-    background: linear-gradient(45deg, #F18F01 0%, #F9B256 100%);
+    background: linear-gradient(45deg, $tangerine 0%, $casablanca 100%);
   }
   &-success {
-    background: linear-gradient(#54ED9F,#A67AB2);
+    background: linear-gradient($turquoise-blue, $lavender-purple);
+    &:hover, &:active, &:focus {
+      color: $white !important;
+    }
   }
 }
 

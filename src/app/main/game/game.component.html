@@ -1,14 +1,109 @@
-<section>
-  <div class="container pt-60">
+<section class="d-flex position-relative justify-content-center align-items-center">
+  <div class="container z-index-1">
     <div class="row justify-content-center">
       <div class="col-4 d-none d-lg-block">
         <bitkong-statistics></bitkong-statistics>
       </div>
-      <div class="main col-12 col-md-8 col-lg-4 bg-color-white">
+      <div class="main position-relative col-12 col-md-8 col-lg-4 z-index-1">
+        <div class="ticket p-20 mt-100 border-top-left-radius-15 border-top-right-radius-15">
+          <div class="balance-unit position-relative d-flex justify-content-center align-items-center bg-warning py-5 px-15 border-radius-10 mb-5">
+            <div class="position-absolute left-15">
+              <img src="assets/images/main/balance-unit.svg" alt="unit">
+            </div>
+            <span class="color-bazaar font-20">R 9,985,200</span>
+          </div>
+          <div class="d-flex flex-column-reverse" >
+            <div class="row step mb-5" *ngFor="let step of steps; let i = index;" >
+              <div class="col-4" *ngFor="let item of stepItems; let j = index;" (click)="playBetting(i, j)">
+                <div class="bg-warning d-flex justify-content-center align-items-center border-radius-5 py-3 height-36">
+                  <ng-container *ngIf="currentGameStatus !== GameStatus.Zero && currentStep > i && j == 0; else other">
+                    <img class="width-30 height-25" src="assets/images/icons/{{ currentGameLevel | lowercase }}.png" [alt]="currentGameLevel">
+                  </ng-container>
+                  <ng-template #other>
+                    <div class="px-10 py-3 border-radius-30 border-1 bg-color-chalky border-color-gold-sand">
+                      <span class="color-puce font-12 user-select-none">R 1,200</span>
+                    </div>
+                  </ng-template>
+                  <div *ngIf="currentGameStatus != GameStatus.Zero && currentStep === i">
+                    <span *ngIf="j === 0" class="arrow arrow-prev"></span>
+                    <span *ngIf="j === stepItems.length - 1" class="arrow arrow-next"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row step mt-10">
+            <ng-container *ngIf="currentGameStatus === GameStatus.Zero; else other">
+              <div class="col-6">
+                <button class="btn btn-success color-white w-100" (click)="playDemo()">DEMO</button>
+              </div>
+              <div class="col-6">
+                <button class="btn btn-primary color-white w-100" (click)="playReal()">REAL</button>
+              </div>
+            </ng-container>
+            <ng-template #other>
+              <div class="w-100">
+                <button class="btn btn-primary color-white w-100" (click)="playEnd()">{{ currentGameEarningAmount > 0 ? 'TAKE R ' + currentGameEarningAmount : 'END' }}</button>
+              </div>
+            </ng-template>
+          </div>
+          <div class="d-flex justify-content-center align-items-center height-50 px-15 py-5 position-relative bg-primary border-radius-15 mt-10">
+            <div class="d-flex position-absolute left-10">
+              <div class="d-flex justify-content-center align-items-center border-radius-10 bg-color-smoky text-warning px-10 mr-5">
+                <span class="text-warning font-11 font-weight-lighter">MIN</span>
+              </div>
+              <div class="d-flex justify-content-center align-items-center border-radius-10 bg-color-smoky text-warning px-9">
+                <span class="text-warning font-15 font-weight-lighter mb-2">-</span>
+              </div>
+            </div>
+            <div class="d-flex position-absolute right-10">
+              <div class="d-flex justify-content-center align-items-center border-radius-10 bg-color-smoky text-warning px-7 mr-5">
+                <span class="text-warning font-15 font-weight-lighter">+</span>
+              </div>
+              <div class="d-flex justify-content-center align-items-center border-radius-10 bg-color-smoky text-warning px-10">
+                <span class="text-warning font-11 font-weight-lighter">MAX</span>
+              </div>
+            </div>
+            <span class="font-15 font-weight-bold text-warning">R 2,000</span>
+          </div>
+        </div>
+        <div class="d-flex">
+          <div class="col-4 d-flex py-8 justify-content-center align-items-center game-level" *ngFor="let level of gameLevels"
+               [class.active]="currentGameLevel === level" (click)="selectLevel(level)">
+            <div>
+              <img class="width-25 height-20" src="assets/images/icons/{{ level | lowercase }}.png" alt="easy">
+            </div>
+            <span class="ml-5 font-12 color-white font-weight-light">{{ level }}</span>
+          </div>
+        </div>
+        <div class="verify-ticket d-flex bg-color-quick-sand justify-content-center border-bottom-left-radius-15 border-bottom-right-radius-15 py-3">
+          <span class="color-white font-12 user-select-none">VERIFY TICKET FAIRNESS</span>
+        </div>
+        <div class="monkey-head d-flex justify-content-center position-absolute top-0">
+          <img src="assets/images/main/monkey-head.svg" alt="Monkey-Head">
+        </div>
+        <div class="monkey-hand d-flex justify-content-center position-absolute top-75">
+          <img src="assets/images/main/monkey-hand.png" alt="Monkey-Hand">
+        </div>
+        <div class="monkey-body d-flex justify-content-center position-absolute top-30 z-index-n1">
+          <img class="w-100" src="assets/images/main/monkey-body.png" alt="Monkey-Body">
+        </div>
       </div>
       <div class="col-4 d-none d-lg-block">
         <bitkong-hero-hall></bitkong-hero-hall>
       </div>
     </div>
+  </div>
+  <div class="moon position-absolute top-n40 z-index-0">
+    <img src="assets/images/main/moon.svg" alt="Moon">
+  </div>
+  <div class="mountain position-absolute w-100 z-index-0">
+    <img src="assets/images/main/mountain.svg" alt="Mountain">
+  </div>
+  <div class="tree-1 position-absolute w-100 z-index-0">
+    <img src="assets/images/main/tree-1.svg" alt="Tree-1">
+  </div>
+  <div class="tree-2 position-absolute top-0 z-index-0">
+    <img src="assets/images/main/tree-2.svg" alt="Moon">
   </div>
 </section>

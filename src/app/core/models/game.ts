@@ -1,5 +1,11 @@
 export enum GameLevel {
-  Easy = 'easy',
-  Medium = 'medium',
-  Hard = 'hard'
+  Easy = 'EASY',
+  Medium = 'MEDIUM',
+  Hard = 'HARD'
+}
+
+export enum GameStatus {
+  Demo = 'DEMO',
+  Real = 'REAL',
+  Zero = 'ZERO',
 }

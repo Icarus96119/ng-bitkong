@@ -5,7 +5,7 @@
     <desc>Created with Sketch.</desc>
     <defs>
         <linearGradient x1="46.9586998%" y1="21.4730306%" x2="46.9587001%" y2="80.2573674%" id="linearGradient-1">
-            <stop stop-color="#453F70" offset="0%"></stop>
+            <stop stop-color="$east-bay" offset="0%"></stop>
             <stop stop-color="#714F72" offset="100%"></stop>
         </linearGradient>
         <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">

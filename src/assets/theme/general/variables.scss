@@ -1,19 +1,29 @@
 // Colors
 $mulled-wine-primary: #50446D;
 $mulled-wine: #493E65;
+$east-bay: #453F70;
 $rhino: #31386f;
+$lavender-purple: #A67AB2;
 $turquoise-blue: #54ED9F;
 $manhattan: #F5CC9C;
+$tangerine: #F18F01;
 $carnation: #FA6969;
 $blue-haze: #C7BFD5;
 $salt-box: #714F72;
 $smoky: #625178;
+$bazaar: #8F6B7B;
+$chalky: #EDC197;
+$gold-sand: #E5B793;
+$puce: #CB9385;
+$pastel-green: #59E09D;
+$quick-sand: #C39E8C;
+$casablanca: #F9B256;
 
 $theme-colors: (
-  primary: $mulled-wine-primary,
-  success: $turquoise-blue,
-  warning: $manhattan,
-  danger: $carnation
+        primary: $mulled-wine-primary,
+        success: $turquoise-blue,
+        warning: $manhattan,
+        danger: $carnation
 );
 
 // Headings
@@ -27,11 +37,11 @@ $h3-font-size: $font-size-base * 1.5;
 $h4-font-size: $font-size-base * 1.125;
 
 // Spacing
-$pixel-spacer: 5px !default;
+$pixel-spacer: 1px !default;
 // stylelint-disable-next-line scss/dollar-variable-default
-@for $i from 1 through 100 {
+@for $i from 1 through 500 {
   $spacers: map-merge($spacers, (
-    $i * 5: ($i * $pixel-spacer)
+          $i: ($i * $pixel-spacer)
   ));
 }
 

@@ -6,7 +6,7 @@
     <defs>
         <radialGradient cx="46.9587001%" cy="80.2573674%" fx="46.9587001%" fy="80.2573674%" r="101.229524%" id="radialGradient-1">
             <stop stop-color="#714F72" offset="0%"></stop>
-            <stop stop-color="#453F70" offset="100%"></stop>
+            <stop stop-color="$east-bay" offset="100%"></stop>
         </radialGradient>
         <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">
             <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>

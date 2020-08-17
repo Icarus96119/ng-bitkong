@@ -1,31 +1,113 @@
 @import "../../../assets/theme";
 
+:host {
+  flex-grow: 1;
+}
+
 section {
   background: linear-gradient(147deg, $rhino, $salt-box);
+
+  .tree-2, .moon {
+    img {
+      opacity: .7;
+    }
+  }
 }
 
 .main {
-  min-height: 500px;
+  .ticket {
+    background-image: linear-gradient(#BD807D,#E5B794);
+
+    .step {
+      margin: 0 -2.5px;
+      .col-4 {
+        padding: 0 2.5px;
+      }
+      .col-6 {
+        padding: 0 2.5px;
+      }
+
+      .arrow {
+        position: absolute;
+        color: $manhattan;
+        font-size: 12px;
+        top: 9px;
+      }
+
+      .arrow-prev {
+        text-align: left;
+        animation: moving-arrow-left 1s ease-in-out infinite;
+
+        &:before {
+          content: ">";
+          font-weight: bold;
+          font-size: 15px;
+        }
+      }
+
+      .arrow-next {
+        text-align: right;
+        animation: moving-arrow-right 1s ease-in-out infinite;
+
+        &:before {
+          content: "<";
+          font-weight: bold;
+          font-size: 15px;
+        }
+      }
+      @keyframes moving-arrow-left { 0%,100% { left: -37px; right: 0 } 50% { left: -31px; right: 0 } }
+      @keyframes moving-arrow-right { 0%,100% { right: -37px; left: 0 } 50% { right: -31px; left: 0 } }
+    }
+  }
+
+  .game-level {
+    &:hover, &:active, &:focus, &.active {
+      img {
+        opacity: 1;
+      }
+      span {
+        opacity: 1;
+      }
+      border-bottom: solid 3px $pastel-green;
+    }
+
+    img {
+      opacity: .5;
+    }
+    span {
+      opacity: .5;
+    }
+  }
+
+  .verify-ticket {
+    &:hover, &:active, &:focus {
+      background: linear-gradient($salt-box, $east-bay);
+    }
+  }
+
+  .monkey-head {
+    left: calc(50% - 52px);
+  }
+
+  .monkey-hand {
+    left: calc(50% - 154px);
+  }
+
+  .monkey-body {
+    z-index: -1;
+    width: 90%;
+    left: 5%;
+  }
 }
 
-:host ::ng-deep {
+bitkong-statistics::ng-deep {
   .tabs {
-    border-radius: 15px 15px 0 0;
-
     .tab-item {
       &.active {
         div {
           background: $smoky;
         }
       }
-
-      div {
-        border-radius: 5px;
-      }
-    }
-
-    div {
-      cursor: pointer;
     }
   }
 }
