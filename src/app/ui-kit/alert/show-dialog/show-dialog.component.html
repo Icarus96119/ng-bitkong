@@ -1,0 +1,8 @@
+<h1 mat-dialog-title class="text-center {{ content > 0 ? 'text-success' : 'text-danger' }} font-weight-bold" *ngIf="content > 0">{{ title | titlecase }}</h1>
+<div class="d-flex justify-content-center" mat-dialog-actions>
+  <button class="btn d-flex justify-content-center align-items-center btn-success color-white" [mat-dialog-close]="true" *ngIf="content > 0">
+    <span color-white>TAKE {{ content | number}}</span>
+    <img class="ml-5" src="assets/images/icons/coin.png" alt="Rubids Coin">
+  </button>
+  <button class="btn btn-danger color-white" [mat-dialog-close]="true" *ngIf="content === 0">Confirm</button>
+</div>

@@ -5,7 +5,7 @@
 }
 
 section {
-  background: linear-gradient(147deg, $rhino, $salt-box);
+  background: linear-gradient(147deg, $rhino, $thunder);
 
   .tree-2, .moon {
     img {
@@ -14,9 +14,21 @@ section {
   }
 }
 
+button {
+  &:hover:enabled, &:focus:enabled {
+    outline: 0;
+    box-shadow: unset;
+  }
+}
+
 .main {
   .ticket {
     background-image: linear-gradient(#BD807D,#E5B794);
+
+    .close-img {
+      top: -1px;
+      right: -1px;
+    }
 
     .step {
       margin: 0 -2.5px;
@@ -26,7 +38,14 @@ section {
       .col-6 {
         padding: 0 2.5px;
       }
-
+      .btn-betting {
+        background: $manhattan;
+        border: 0;
+        &:hover:enabled, &:focus:enabled {
+          border: solid 2px $old-rose;
+          outline: 0;
+        }
+      }
       .arrow {
         position: absolute;
         color: $manhattan;
@@ -61,14 +80,15 @@ section {
   }
 
   .game-level {
-    &:hover, &:active, &:focus, &.active {
+    border: 0px;
+    &.active {
       img {
         opacity: 1;
       }
       span {
         opacity: 1;
       }
-      border-bottom: solid 3px $pastel-green;
+      border-bottom: solid 3px $pastel-green !important;
     }
 
     img {
@@ -82,6 +102,12 @@ section {
   .verify-ticket {
     &:hover, &:active, &:focus {
       background: linear-gradient($salt-box, $east-bay);
+    }
+  }
+
+  .btn-max-min {
+    &.active {
+      border: solid 2px $manhattan;
     }
   }
 
@@ -100,14 +126,68 @@ section {
   }
 }
 
-bitkong-statistics::ng-deep {
-  .tabs {
-    .tab-item {
-      &.active {
-        div {
-          background: $smoky;
-        }
+.confirm-ticket {
+  opacity: 1;
+  transition: all 0.7s ease;
+
+  .current-ticket {
+    border-radius: 10px 0 0 10px;
+  }
+
+  .next-ticket {
+    border-radius: 0 10px 10px 0;
+  }
+}
+
+.ticket-close {
+  max-height: 0;
+  opacity: 0
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  background: transparent;
+  border: solid 1px $manhattan !important;
+  outline: 0 !important;
+  -moz-appearance: textfield;
+  &:active, &:hover, &:focus {
+    border: solid 1px $manhattan !important;
+    outline: 0 !important;
+  }
+}
+
+ng5-slider::ng-deep {
+  .ng5-slider-limit {
+    color: #BD807D !important;
+  }
+  .ng5-slider-bubble {
+    color: #BD807D !important;
+  }
+  .ng5-slider-pointer {
+    background: $manhattan;
+    outline: 0;
+    &:after {
+      background: $charade;
+    }
+    &:active, &:focus, &:hover {
+      &:after {
+        background: $charade;
       }
     }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .current-ticket {
+    border-radius: 10px 10px 0 0 !important;
+  }
+
+  .next-ticket {
+    border-radius: 0 0 10px 10px !important;
   }
 }

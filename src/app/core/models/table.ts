@@ -8,6 +8,8 @@ export interface TableColumn {
 
 export enum ColumnTypes {
   Player = 'PLAYER',
+  Bet = 'BET',
+  Profit = 'PROFIT',
   Step = 'STEP',
   Prize = 'PRIZE',
   Wagered = 'WAGERED'

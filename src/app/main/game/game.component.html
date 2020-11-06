@@ -1,88 +1,93 @@
 <section class="d-flex position-relative justify-content-center align-items-center h-100">
   <div class="container z-index-1">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center" [class.mb-0]="!isConfirmTicketOpened" [class.mb-10]="isConfirmTicketOpened">
       <div class="col-4 d-none d-lg-block">
-        <bitkong-statistics></bitkong-statistics>
+        <bitkong-play-history selfClass="mt-100"></bitkong-play-history>
       </div>
-      <div class="main position-relative col-12 col-md-8 col-lg-4 z-index-1">
-        <div class="ticket p-20 mt-100 border-top-left-radius-15 border-top-right-radius-15">
+      <div class="main position-relative col-11 col-md-8 col-lg-4 z-index-1">
+        <div class="ticket position-relative p-20 mt-100 border-top-left-radius-15 border-top-right-radius-15">
+          <div class="position-absolute z-index-1 top-0 right-0" *ngIf="currentGameType === GameType.Demo && isStart">
+            <img src="assets/images/main/demo.png" alt="Demo">
+          </div>
+          <div class="position-absolute z-index-1 close-img" (click)="closeDialog()" *ngIf="isEnd">
+            <img src="assets/images/main/close.svg" alt="Close">
+          </div>
           <div class="balance-unit position-relative d-flex justify-content-center align-items-center bg-warning py-5 px-15 border-radius-10 mb-5">
             <div class="position-absolute left-15">
               <img src="assets/images/main/balance-unit.svg" alt="unit">
             </div>
-            <span class="color-bazaar font-20">R 9,985,200</span>
+            <img class="mr-5 width-20" src="assets/images/icons/coin.png" alt="Rubids Coin">
+            <span class="color-bazaar font-20 user-select-none">{{ gameMoney | number }}</span>
           </div>
-          <div class="d-flex flex-column-reverse" >
-            <div class="row step mb-5" *ngFor="let step of steps; let i = index;" >
-              <div class="col-4" *ngFor="let item of stepItems; let j = index;" (click)="playBetting(i, j)">
-                <div class="bg-warning d-flex justify-content-center align-items-center border-radius-5 py-3 height-36">
-                  <ng-container *ngIf="currentGameStatus !== GameStatus.Zero && currentStep > i && j == 0; else other">
-                    <img class="width-30 height-25" src="assets/images/icons/{{ currentGameLevel | lowercase }}.png" [alt]="currentGameLevel">
-                  </ng-container>
-                  <ng-template #other>
-                    <div class="px-10 py-3 border-radius-30 border-1 bg-color-chalky border-color-gold-sand">
-                      <span class="color-puce font-12 user-select-none">R 1,200</span>
-                    </div>
-                  </ng-template>
-                  <div *ngIf="currentGameStatus != GameStatus.Zero && currentStep === i">
-                    <span *ngIf="j === 0" class="arrow arrow-prev"></span>
-                    <span *ngIf="j === stepItems.length - 1" class="arrow arrow-next"></span>
+          <div class="d-flex flex-column-reverse" *ngIf="currentGameSetting">
+            <div class="row step mb-5" *ngFor="let step of currentGameSetting.rules; let i = index;" >
+              <div class="col-{{ 12 / currentGameSetting.columnCount }}" *ngFor="let item of stepColumnCounts; let j = index;">
+                <button class="btn-betting w-100 d-flex justify-content-center align-items-center border-radius-5 py-3 height-{{ 36 * 10 / currentGameSetting.rules.length }}"
+                        [disabled]="!isStart || !stepLogs[stepCounts - i]" (click)="confirm(i, j)">
+                  <div class="px-10 py-3 border-radius-30 border-1 bg-color-chalky border-color-gold-sand" *ngIf="!isFailTable[i][j] && !isSuccessTable[i][j] && !waitingTable[i][j]">
+                    <img class="mr-5" src="assets/images/icons/coin.png" alt="Rubids Coin">
+                    <span class="color-puce font-12 user-select-none">{{ Math.ceil(basicBettingMoney * Math.pow(currentGameSetting.bettingRatio, i + 1)) | number }}</span>
                   </div>
-                </div>
+                  <div class="d-flex justify-content-center align-items-center height-30 px-10 py-3" *ngIf="isFailTable[i][j]">
+                    <img class="height-20" src="assets/images/icons/fail.png" alt="Lost">
+                    <img class="height-10 ml-5" src="assets/images/icons/fail-text.png" alt="Try Again">
+                  </div>
+                  <div class="d-flex justify-content-center align-items-center height-30 px-10 py-3" *ngIf="isSuccessTable[i][j]">
+                    <img class="height-20" src="assets/images/icons/{{ currentGameLevel.toLowerCase() }}.png" alt="Success">
+                    <img class="height-10 ml-5" src="assets/images/icons/success-text.png" *ngIf="isStart" alt="Cool">
+                  </div>
+                  <div class="d-flex justify-content-center align-items-center height-30 px-10 py-3" *ngIf="waitingTable[i][j]">
+                    <img class="height-25" src="assets/images/icons/wait.png" alt="Wait">
+                  </div>
+                  <div *ngIf="stepLogs[stepCounts - i]">
+                    <span *ngIf="j === 0" class="arrow arrow-prev"></span>
+                    <span *ngIf="j === stepColumnCounts.length - 1" class="arrow arrow-next"></span>
+                  </div>
+                </button>
               </div>
             </div>
           </div>
           <div class="row step mt-10">
-            <ng-container *ngIf="currentGameStatus === GameStatus.Zero; else other">
+            <ng-container *ngIf="!isStart; else other">
               <div class="col-6">
-                <button class="btn btn-success color-white w-100" (click)="playDemo()">DEMO</button>
+                <button class="btn btn-success color-white w-100" (click)="play(GameType.Demo)">DEMO</button>
               </div>
               <div class="col-6">
-                <button class="btn btn-primary color-white w-100" (click)="playReal()">REAL</button>
+                <button class="btn btn-primary color-white w-100" (click)="play(GameType.Real)">REAL</button>
               </div>
             </ng-container>
             <ng-template #other>
               <div class="w-100">
-                <button class="btn btn-primary color-white w-100" (click)="playEnd()">{{ currentGameEarningAmount > 0 ? 'TAKE R ' + currentGameEarningAmount : 'END' }}</button>
+                <button class="btn btn-primary color-white w-100" *ngIf="currentGameEarningAmount === 0" (click)="playEnd(currentGameEarningAmount, GamePlayResult.End)">END</button>
+                <button class="btn btn-primary d-flex justify-content-center align-items-center w-100" *ngIf="currentGameEarningAmount > 0" (click)="playEnd(currentGameEarningAmount, GamePlayResult.Congratulation)">
+                  <span color-white>TAKE&nbsp;</span>
+                  <img class="mr-5" src="assets/images/icons/coin.png" alt="Rubids Coin">
+                  <span color-white>{{ currentGameEarningAmount | number}}</span>
+                </button>
               </div>
             </ng-template>
           </div>
-          <div class="d-flex justify-content-center align-items-center height-50 px-15 py-5 position-relative bg-primary border-radius-15 mt-10">
-            <div class="d-flex position-absolute left-10">
-              <div class="d-flex justify-content-center align-items-center border-radius-10 bg-color-smoky text-warning px-10 mr-5">
-                <span class="text-warning font-11 font-weight-lighter">MIN</span>
-              </div>
-              <div class="d-flex justify-content-center align-items-center border-radius-10 bg-color-smoky text-warning px-9">
-                <span class="text-warning font-15 font-weight-lighter mb-2">-</span>
-              </div>
-            </div>
-            <div class="d-flex position-absolute right-10">
-              <div class="d-flex justify-content-center align-items-center border-radius-10 bg-color-smoky text-warning px-7 mr-5">
-                <span class="text-warning font-15 font-weight-lighter">+</span>
-              </div>
-              <div class="d-flex justify-content-center align-items-center border-radius-10 bg-color-smoky text-warning px-10">
-                <span class="text-warning font-11 font-weight-lighter">MAX</span>
-              </div>
-            </div>
-            <span class="font-15 font-weight-bold text-warning">R 2,000</span>
+          <div class="d-flex justify-content-center align-items-center height-75 px-15 py-5 position-relative bg-primary border-radius-15 mt-10" *ngIf="currentGameSetting">
+            <ng5-slider [(value)]="basicBettingMoney" [options]="{ floor: currentGameSetting.minMoney, ceil: currentGameSetting.maxMoney, disabled: isStart, step: (currentGameSetting.maxMoney - currentGameSetting.maxMoney) / 10 }"></ng5-slider>
           </div>
         </div>
         <div class="d-flex">
-          <div class="col-4 d-flex py-8 justify-content-center align-items-center game-level" *ngFor="let level of gameLevels"
-               [class.active]="currentGameLevel === level" (click)="selectLevel(level)">
+          <button class="col-4 d-flex py-8 justify-content-center align-items-center game-level bg-color-charade" *ngFor="let level of gameLevels"
+               [class.active]="currentGameLevel === level.value" (click)="selectLevel(level.value)" [disabled]="isStart">
             <div>
-              <img class="width-25 height-20" src="assets/images/icons/{{ level | lowercase }}.png" alt="easy">
+              <img class="width-25 height-20" src="assets/images/icons/{{ level.label | lowercase }}.png" alt="easy">
             </div>
-            <span class="ml-5 font-12 color-white font-weight-light">{{ level }}</span>
-          </div>
+            <span class="ml-5 font-12 color-white font-weight-light">{{ level.label }}</span>
+          </button>
         </div>
-        <div class="verify-ticket d-flex bg-color-quick-sand justify-content-center border-bottom-left-radius-15 border-bottom-right-radius-15 py-3">
+        <div class="verify-ticket d-flex bg-color-quick-sand justify-content-center border-bottom-left-radius-15 border-bottom-right-radius-15 py-3" (click)="openConfirmTicket()">
           <span class="color-white font-12 user-select-none">VERIFY TICKET FAIRNESS</span>
+          <img class="ml-10 width-15" src="assets/images/icons/arrow-{{isConfirmTicketOpened ? 'up' : 'down'}}.svg" alt="{{isConfirmTicketOpened ? 'UP' : 'DOWN'}}">
         </div>
         <div class="monkey-head d-flex justify-content-center position-absolute top-0">
           <img src="assets/images/main/monkey-head.svg" alt="Monkey-Head">
         </div>
-        <div class="monkey-hand d-flex justify-content-center position-absolute top-75">
+        <div class="monkey-hand d-flex justify-content-center position-absolute z-index-3 top-75">
           <img src="assets/images/main/monkey-hand.png" alt="Monkey-Hand">
         </div>
         <div class="monkey-body d-flex justify-content-center position-absolute top-30 z-index-n1">
@@ -90,7 +95,65 @@
         </div>
       </div>
       <div class="col-4 d-none d-lg-block">
-        <bitkong-hero-hall></bitkong-hero-hall>
+        <bitkong-hero-hall selfClass="mt-100"></bitkong-hero-hall>
+      </div>
+    </div>
+    <div class="row confirm-ticket justify-content-center border-radius-10 mb-50" [class.ticket-close]="!isConfirmTicketOpened">
+      <div class="col-11 col-lg-8 current-ticket bg-color-mulled-wine-secondary p-25" *ngIf="isConfirmTicketOpened">
+        <h4 class="text-warning mb-15">Current Ticket</h4>
+        <div class="row">
+          <div class="col-12 col-lg-6 mb-15">
+            <p class="color-white mb-5">Hash</p>
+            <div class="bg-primary w-100 px-10 py-5 border-radius-5 color-blue-haze height-50 word-break">
+              {{ hashStr }}
+            </div>
+          </div>
+          <div class="col-12 col-lg-6 mb-15">
+            <p class="color-white mb-5">Game Number</p>
+            <div class="bg-primary w-100 px-10 py-5 border-radius-5 color-blue-haze height-50 word-break">
+              {{ gameNumber }}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-lg-3 mb-15 mb-lg-0">
+            <p class="color-white mb-5">Server Seed</p>
+            <div class="d-flex align-items-center bg-primary w-100 px-10 py-5 border-radius-5 color-blue-haze height-50 word-break">
+              <span>{{ serverSeed }}</span>
+            </div>
+          </div>
+          <div class="col-12 col-lg-3 mb-15 mb-lg-0">
+            <p class="color-white mb-5">Client Seed</p>
+            <div class="d-flex align-items-center bg-primary w-100 px-10 py-5 border-radius-5 color-blue-haze height-50 word-break">
+              <span>{{ clientSeed }}</span>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6 mb-15 mb-lg-0">
+            <p class="color-white mb-5">Result</p>
+            <div class="d-flex align-items-center bg-primary w-100 px-10 py-5 border-radius-5 color-white height-50 word-break">
+              <span>{{ result }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-11 col-lg-4 next-ticket bg-color-mulled-wine p-25" *ngIf="isConfirmTicketOpened">
+        <h4 class="text-warning mb-15">Next Ticket</h4>
+        <div class="row mb-15">
+          <div class="col-12">
+            <p class="color-white mb-5">Hash</p>
+            <div class="bg-primary w-100 px-10 py-5 border-radius-5 color-blue-haze height-50 word-break">
+              {{ nextHashStr }}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <p class="color-white mb-5">Client Seed</p>
+            <div class="d-flex align-items-center bg-primary w-100 px-10 py-5 border-radius-5 color-white height-50 word-break">
+              <span>{{ nextClientSeed }}</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -107,3 +170,4 @@
     <img class="w-100" src="assets/images/main/tree-2.svg" alt="Moon">
   </div>
 </section>
+<bitkong-spinner *ngIf="isLoading"></bitkong-spinner>

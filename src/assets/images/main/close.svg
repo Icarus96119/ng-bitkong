@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="93px" height="93px" viewBox="0 0 93 93" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.3 (12072) - http://www.bohemiancoding.com/sketch -->
+    <title>demo-close</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path id="path-1" d="M0.526,0.901 L78.492,0.901 C86.223,0.901 92.49,7.16 92.49,14.899 L92.49,92.866 L0.526,0.901"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="gameplay" sketch:type="MSArtboardGroup" transform="translate(-1103.000000, -227.000000)">
+            <g id="Imported-Layers" sketch:type="MSLayerGroup" transform="translate(1103.000000, 227.000000)">
+                <g id="demo-close">
+                    <mask id="mask-2" sketch:name="demo-close" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use fill="#625178" sketch:type="MSShapeGroup" xlink:href="#path-1"></use>
+                    <path d="M59.2074638,35.5656946 L59.2074638,35.5656946 C60.0679617,36.4186621 61.4620434,36.4186621 62.3225413,35.5656946 L65.0045516,32.9071549 C65.8650495,32.0541873 67.2591312,32.0541873 68.119629,32.9071549 L70.8016393,35.5656946 C71.6621372,36.417731 73.0571583,36.417731 73.9176562,35.5647634 L73.9185956,35.5638322 C74.7781541,34.7108647 74.7772147,33.3289827 73.9176562,32.4769464 L71.2356459,29.8184067 C70.375148,28.9654391 70.375148,27.5835572 71.2356459,26.7305896 L73.9167168,24.0729811 C74.7772147,23.2209447 74.7762753,21.8381316 73.9157774,20.9851641 L73.914838,20.9842329 C73.0543401,20.1321965 71.6602584,20.1321965 70.8006999,20.9851641 L68.119629,23.6427726 C67.2591312,24.4957401 65.8650495,24.4957401 65.0045516,23.6427726 L62.3225413,20.9851641 C61.4629828,20.1331277 60.0689011,20.1331277 59.2084032,20.9851641 C58.3479054,21.8381316 58.3479054,23.2209447 59.2084032,24.0729811 L61.8894741,26.7305896 C62.749972,27.5835572 62.749972,28.9654391 61.8894741,29.8184067 L59.2074638,32.4778775 C58.3479054,33.3308451 58.3479054,34.712727 59.2074638,35.5656946" id="Path" fill="#8C81A2" sketch:type="MSShapeGroup" mask="url(#mask-2)"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

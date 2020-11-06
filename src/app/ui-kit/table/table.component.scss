@@ -1,20 +1,9 @@
 @import "../../../assets/theme";
 
-.table-header {
-  height: 35px;
-}
-
 .table-row {
   background: linear-gradient(rgba(255,255,255,.05),rgba(255,255,255,.1));
 
   .circle {
     background: rgba(255,255,255,.06)
-  }
-
-  .prize-icon {
-    background-image: url('/assets/images/icons/medal.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
   }
 }

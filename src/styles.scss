@@ -1,5 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+@import "assets/theme/mat-theme-custom";
 
+/* You can add global styles to this file, and also import other style files */
+@import "~@ng-select/ng-select/themes/default.theme.css";
+@import "~@ng-select/ng-select/themes/material.theme.css";
 @import "assets/theme";
 @import "~bootstrap";
 
@@ -8,3 +11,11 @@
 * {
   font-family: 'Poppins', sans-serif;
 }
+
+.mat-dialog-container {
+  background: transparent !important;
+  box-shadow: unset !important;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

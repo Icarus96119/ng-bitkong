@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --base-href=\"/themes/rubids/game/bitkong/\"",
+    "build:prod": "ng build --prod --base-href=\"/themes/rubids/game/bitkong/\"",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -22,8 +23,11 @@
     "@angular/platform-browser-dynamic": "~10.0.9",
     "@angular/router": "~10.0.9",
     "@ng-bootstrap/ng-bootstrap": "^7.0.0",
+    "@ng-select/ng-select": "^5.0.8",
+    "angular-2-local-storage": "^3.0.2",
     "bootstrap": "^4.5.2",
     "jquery": "^3.5.1",
+    "ng5-slider": "^1.2.4",
     "popper.js": "^1.16.1",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",

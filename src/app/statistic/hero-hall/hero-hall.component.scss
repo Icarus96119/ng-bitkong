@@ -1,0 +1,51 @@
+@import "../../../assets/theme";
+
+.ng-select ::ng-deep  {
+  width: 100%;
+  border-radius: 10px;
+  border-color: transparent !important;
+  margin-top: 10px;
+  padding-bottom: 0;
+
+  .ng-select-container {
+    background: $smoky;
+    color: $blue-haze;
+    border-width: 0 !important;
+    border-radius: 10px 10px 0 0 !important;
+    border-color: transparent !important;
+    &:after {
+      display: none;
+    }
+    &:active {
+      background-image: linear-gradient($east-bay, $salt-box);
+    }
+  }
+  .ng-value-container {
+    border-top: 10px solid transparent;;
+    .ng-value {
+      padding-left: 15px;
+    }
+  }
+  .ng-dropdown-panel {
+    top: 100%;
+    border-color: $smoky;
+    .ng-option {
+      color: $blue-haze;
+      background: $mulled-wine-primary;
+      &.ng-option-selected {
+        background: $smoky !important;
+        color: white !important;
+      }
+    }
+    .ng-option-marked {
+      background: $mulled-wine-primary;
+      color: white;
+    }
+  }
+  .ng-arrow-wrapper {
+    bottom: 13px !important;
+    &::after {
+      content: '';
+    }
+  }
+}

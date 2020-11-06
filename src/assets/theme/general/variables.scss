@@ -1,8 +1,10 @@
 // Colors
-$mulled-wine-primary: #50446D;
 $mulled-wine: #493E65;
+$mulled-wine-primary: #50446D;
+$mulled-wine-secondary: #574871;
 $east-bay: #453F70;
 $rhino: #31386f;
+$thunder: #332133;
 $lavender-purple: #A67AB2;
 $turquoise-blue: #54ED9F;
 $manhattan: #F5CC9C;
@@ -18,12 +20,20 @@ $puce: #CB9385;
 $pastel-green: #59E09D;
 $quick-sand: #C39E8C;
 $casablanca: #F9B256;
+$yellow-green: #C6E47F;
+$smoky: #625178;
+$charade: #302F42;
+$old-rose: #C0847F;
+$blue-romance: #D1F4D9;
+$humming-bird: #D0F3F8;
+$peach: #FFE4BC;
+$cosmos: #FED6DB;
 
 $theme-colors: (
-        primary: $mulled-wine-primary,
-        success: $turquoise-blue,
-        warning: $manhattan,
-        danger: $carnation
+  primary: $mulled-wine-primary,
+  success: $turquoise-blue,
+  warning: $manhattan,
+  danger: $carnation
 );
 
 // Headings

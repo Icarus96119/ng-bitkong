@@ -13,6 +13,13 @@
   border-radius: $size + 'px';
 }
 
+@mixin flex($segment, $size) {
+  flex: 0 0 $size;
+  #{$segment}: $size;
+  min-#{$segment}: $size;
+  max-#{$segment}: $size;
+}
+
 @mixin absolute_fit_parent() {
   position: absolute;
   top: 0;
@@ -50,16 +57,5 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-}
-
-@mixin parallelogram_height($parent_height, $height) {
-  uh-hub-parallelogram-section::ng-deep {
-    section {
-      height: $parent_height;
-      .parallelogram {
-        height: $height;
-      }
-    }
   }
 }

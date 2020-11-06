@@ -6,9 +6,9 @@ export const statisticsTypes = [
     value: StatisticsType.Recent,
     label: 'RECENT',
     columns: [
-      { name: 'player', label: 'PLAYER', width: '30%', type: ColumnTypes.Player, },
-      { name: 'bet', label: 'BET', width: '25%' },
-      { name: 'profit', label: 'PROFIT', width: '25%' },
+      { name: 'player', label: 'PLAYER', width: '30%', type: ColumnTypes.Player },
+      { name: 'bet', label: 'BET', width: '25%', type: ColumnTypes.Bet },
+      { name: 'profit', label: 'PROFIT', width: '25%', type: ColumnTypes.Profit },
       { name: 'step', label: 'STEP', width: '20%', type: ColumnTypes.Step }
     ]
   },
@@ -17,8 +17,8 @@ export const statisticsTypes = [
     label: 'MY PLAYS',
     columns: [
       { name: 'date', label: 'DATE', width: '30%', type: ColumnTypes.Player, },
-      { name: 'bet', label: 'BET', width: '25%' },
-      { name: 'profit', label: 'PROFIT', width: '25%' },
+      { name: 'bet', label: 'BET', width: '25%', type: ColumnTypes.Bet },
+      { name: 'profit', label: 'PROFIT', width: '25%', type: ColumnTypes.Profit },
       { name: 'step', label: 'STEP', width: '20%', type: ColumnTypes.Step }
     ]
   },
@@ -27,8 +27,8 @@ export const statisticsTypes = [
     label: 'BIG WINS',
     columns: [
       { name: 'player', label: 'PLAYER', width: '30%', type: ColumnTypes.Player, },
-      { name: 'bet', label: 'BET', width: '25%' },
-      { name: 'profit', label: 'PROFIT', width: '25%' },
+      { name: 'bet', label: 'BET', width: '25%', type: ColumnTypes.Bet },
+      { name: 'profit', label: 'PROFIT', width: '25%', type: ColumnTypes.Profit },
       { name: 'step', label: 'STEP', width: '20%', type: ColumnTypes.Step }
     ]
   },

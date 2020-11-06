@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+import { StatisticModule } from '../statistic/statistic.module';
+
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { LayoutComponent } from './layout.component';
@@ -14,7 +16,8 @@ import { LayoutComponent } from './layout.component';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    StatisticModule
   ],
   exports: [
     LayoutComponent

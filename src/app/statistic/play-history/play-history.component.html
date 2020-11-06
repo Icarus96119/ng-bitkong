@@ -1,0 +1,25 @@
+<div [ngClass]="selfClass">
+  <div class="total bg-primary p-10 mb-10 border-radius-15">
+    <div class="row">
+      <div class="col-6 text-center">
+        <p class="text-warning font-20 font-weight-bold">{{ playCount }}</p>
+        <span class="text-warning">GAMES PLAYED</span>
+      </div>
+      <div class="col-6 text-center">
+        <p class="text-warning font-20 font-weight-bold">{{ wageredMoney }}</p>
+        <span class="text-warning">WAGERED (R)</span>
+      </div>
+    </div>
+  </div>
+  <div class="tabs bg-primary border-top-left-radius-15 border-top-right-radius-15">
+    <div class="d-flex">
+      <ng-container *ngFor="let item  of statisticsTypes">
+        <div class="col-4 py-15 px-5 tab-item text-center" [class.active]="currentStatistic === item" (click)="changeStatisticType(item)">
+          <div class="text-warning py-5 px-10 border-radius-5 cursor-pointer user-select-none d-block d-xl-none font-13 font-weight-bold">{{item.label}}</div>
+          <div class="text-warning py-5 px-10 border-radius-5 cursor-pointer user-select-none d-none d-xl-block font-16 font-weight-bold">{{item.label}}</div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <bitkong-table [columns]="currentStatistic.columns" [rows]="playLog" *ngIf="playLog"></bitkong-table>
+</div>

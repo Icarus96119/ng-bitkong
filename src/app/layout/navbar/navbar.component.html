@@ -3,10 +3,14 @@
         <div class="position-absolute d-none d-md-block left-200 top-n20">
             <img src="assets/images/leaves.svg" alt="leaves">
         </div>
-        <div class="position-absolute d-block d-md-none left-130 top-n20">
+        <div class="position-absolute d-block d-md-none left-130 top-n30">
             <img class="width-180" src="assets/images/leaves.svg" alt="leaves">
         </div>
-        <a class="navbar-brand" routerLink="/"><img src="assets/images/logo.png" alt="Bitkong"></a>
+        <div class="d-flex align-items-center">
+            <a class="navbar-brand" routerLink="/"><img src="assets/images/logo.png" alt="Bitkong"></a>
+            <a class="width-24 ml-10" (click)="switchSpeaker()" *ngIf="isSpeakerOn"><img src="assets/images/icons/speaker-off.svg" alt="SPEAKER-OFF"></a>
+            <a class="width-30 ml-10" (click)="switchSpeaker()" *ngIf="!isSpeakerOn"><img src="assets/images/icons/speaker-on.svg" alt="SPEAKER-ON"></a>
+        </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar" >
             <img src="assets/images/icons/menu.svg" alt="menu">
         </button>
@@ -17,6 +21,12 @@
                 <button class="navbar-toggler bg-transparent" type="button" data-toggle="collapse" data-target="#mainNavbar" >
                     <img src="assets/images/icons/close.svg" alt="close">
                 </button>
+            </div>
+            <div class="d-flex d-xl-none justify-content-center mb-30">
+                <bitkong-play-history></bitkong-play-history>
+            </div>
+            <div class="d-flex d-xl-none justify-content-center mb-50">
+                <bitkong-hero-hall></bitkong-hero-hall>
             </div>
         </div>
     </div>
